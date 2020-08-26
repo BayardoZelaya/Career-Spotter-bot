@@ -1,8 +1,11 @@
 {
   "name": "career-spotter-bot",
   "description": "Discord bot that updates server with new job applications and their descriptions on computer science, data science, etc.",
-  "version": "0.1",
+  "version": "0.1.0",
   "main": "index.js",
+  "scripts": {
+    "lint": "eslint **/*.js"
+  },
   "dependencies": {
     "@types/node": "^14.0.27",
     "discord.js": "^12.2.0",
@@ -10,6 +13,9 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "log-symbols": "^4.0.0",
     "prettier": "2.1.0"
   }
