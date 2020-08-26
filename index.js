@@ -1,4 +1,3 @@
-const { Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { sep } = require("path");
 const { success, error, warning } = require("log-symbols");
@@ -28,9 +27,7 @@ const loadCommands = (dir = "./commands") => {
           );
         bot.commands.set(pull.help.name, pull);
 
-        console.log(
-          `${success} Loaded command ${pull.help.name} from ${dir}${sep}${dirs}`
-        );
+        console.log(`${success} Loaded command ${pull.help.name} from ${dir}${sep}${dirs}`);
       } else {
         console.error(
           `${error} Error loading command in ${dir}${sep}${dirs}. You either have a missing help.name or help.name is not a string, or you have a missing help.category or help.category is not a string`
@@ -41,9 +38,7 @@ const loadCommands = (dir = "./commands") => {
       if (pull.help.aliases && typeof pull.help.aliases === "object") {
         pull.help.aliases.forEach((alias) => {
           if (bot.aliases.get(alias))
-            return console.warn(
-              `${warning} Two or more commands have the same alias ${alias}`
-            );
+            return console.warn(`${warning} Two or more commands have the same alias ${alias}`);
           bot.aliases.set(alias, pull.help.name);
         });
       }
@@ -76,6 +71,8 @@ bot.on("message", async (message) => {
   if (!message.content.startsWith(prefix)) return;
 
   if (cmd.length === 0) return;
+
+  let command;
 
   if (bot.commands.has(cmd)) command = bot.commands.get(cmd);
   else if (bot.alias.has(cmd)) command = bot.commands.get(bot.aliases.get(cmd));
