@@ -17,9 +17,9 @@ module.exports.execute = (bot, message) => {
     } else {
       str += `**${bot.config.prefix}${command.help.usage}**\n${command.help.description}\n\n`;
     }
-
-    const embed = new MessageEmbed().setTitle('Commands').setDescription(str);
-
-    return message.channel.send(embed).catch((error) => console.error(error));
   });
+
+  const embed = new MessageEmbed().setTitle('Commands').setDescription(str);
+
+  return message.channel.send(embed).catch((error) => console.error(error));
 };
